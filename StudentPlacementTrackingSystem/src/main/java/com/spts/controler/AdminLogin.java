@@ -13,9 +13,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+<<<<<<< HEAD:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/ServletLogin.java
 @WebServlet("/validate")
 public class ServletLogin extends HttpServlet 
 {
+=======
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
+>>>>>>> 1861cdc98c10dc7c735fc9b581170c03597c2574:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/AdminLogin.java
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -26,18 +31,21 @@ public class ServletLogin extends HttpServlet
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/servlet", "root", "8010865586");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "8010865586");
 			
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM admins WHERE username=? AND password=?");
 			pstmt.setString(1, username);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
+<<<<<<< HEAD:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/ServletLogin.java
 
         		RequestDispatcher r = request.getRequestDispatcher("Landing.html");
         		r.forward(request, response);
+=======
+>>>>>>> 1861cdc98c10dc7c735fc9b581170c03597c2574:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/AdminLogin.java
         	
             		out.println("<h2>Login Successful</h2>");
                 
