@@ -13,8 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@WebServlet("/AdminLogin")
-public class AdminLogin extends HttpServlet {
+@WebServlet("/StudentLoginServlet")
+public class StudentLoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -25,21 +25,17 @@ public class AdminLogin extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "Dhiraj@1432");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "8010865586");
 			
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM admins WHERE username=? AND password=?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM students WHERE email=? AND password=?");
 			pstmt.setString(1, username);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-<<<<<<< HEAD
-        		
-=======
->>>>>>> 2d7a98a0fc0b8be4afc2b43edb0e67c67ee9fa64
-
-            		out.println("<h2>Admin Login Successful</h2>");
+        	
+            		out.println("<h2>Student Login Successful</h2>");
                 
             } else {
                 out.println("<h2>Invalid Username or Password</h2>");
