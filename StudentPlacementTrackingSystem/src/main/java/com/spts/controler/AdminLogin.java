@@ -34,11 +34,15 @@ public class AdminLogin extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
+<<<<<<< HEAD
 
 
         		RequestDispatcher r = request.getRequestDispatcher("Landing.html");
         		r.forward(request, response);
 
+=======
+        	
+>>>>>>> f71f59153bdce80f9a576ea0b8ca9964a95c19a3
             		out.println("<h2>Login Successful</h2>");
                 
             } else {
