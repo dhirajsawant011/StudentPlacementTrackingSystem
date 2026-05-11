@@ -20,7 +20,6 @@ public class ServletRegister extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

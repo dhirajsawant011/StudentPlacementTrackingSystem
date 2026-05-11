@@ -13,14 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-<<<<<<< HEAD:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/ServletLogin.java
-@WebServlet("/validate")
-public class ServletLogin extends HttpServlet 
-{
-=======
 @WebServlet("/AdminLogin")
 public class AdminLogin extends HttpServlet {
->>>>>>> 1861cdc98c10dc7c735fc9b581170c03597c2574:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/AdminLogin.java
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -40,13 +34,11 @@ public class AdminLogin extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-<<<<<<< HEAD:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/ServletLogin.java
+
 
         		RequestDispatcher r = request.getRequestDispatcher("Landing.html");
         		r.forward(request, response);
-=======
->>>>>>> 1861cdc98c10dc7c735fc9b581170c03597c2574:StudentPlacementTrackingSystem/src/main/java/com/spts/controler/AdminLogin.java
-        	
+
             		out.println("<h2>Login Successful</h2>");
                 
             } else {
