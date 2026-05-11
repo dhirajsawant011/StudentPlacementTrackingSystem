@@ -13,8 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@WebServlet("/validate")
-public class ServletLogin extends HttpServlet {
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -25,18 +25,15 @@ public class ServletLogin extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/servlet", "root", "8010865586");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "8010865586");
 			
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM admins WHERE username=? AND password=?");
 			pstmt.setString(1, username);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-
-        		RequestDispatcher r = request.getRequestDispatcher("dashboard.html");
-        		r.forward(request, response);
         	
             		out.println("<h2>Login Successful</h2>");
                 
