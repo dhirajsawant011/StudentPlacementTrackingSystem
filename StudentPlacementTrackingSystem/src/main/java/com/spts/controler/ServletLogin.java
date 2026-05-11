@@ -14,7 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 @WebServlet("/validate")
-public class ServletLogin extends HttpServlet {
+public class ServletLogin extends HttpServlet 
+{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -35,7 +36,7 @@ public class ServletLogin extends HttpServlet {
 
             if (rs.next()) {
 
-        		RequestDispatcher r = request.getRequestDispatcher("dashboard.html");
+        		RequestDispatcher r = request.getRequestDispatcher("Landing.html");
         		r.forward(request, response);
         	
             		out.println("<h2>Login Successful</h2>");
