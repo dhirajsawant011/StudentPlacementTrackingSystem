@@ -1,5 +1,6 @@
 package com.spts.controler;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -50,10 +51,12 @@ public class StudentRegisterServlet extends HttpServlet {
 			pstmt.setString(6, skills);
 			pstmt.setString(7, password);
 
-			int i = pstmt.executeUpdate();
+			int val = pstmt.executeUpdate();
 
-			if (i > 0) {
+			if (val > 0) {
 
+				RequestDispatcher rd = request.getRequestDispatcher("StudentLogin.html");
+				rd.forward(request, response);				
 				out.println("<h2>Registration Successful</h2>");
 
 			} else {

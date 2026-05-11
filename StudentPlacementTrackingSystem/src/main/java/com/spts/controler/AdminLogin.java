@@ -25,7 +25,7 @@ public class AdminLogin extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "8010865586");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "Dhiraj@1432");
 			
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM admins WHERE username=? AND password=?");
 			pstmt.setString(1, username);
@@ -34,16 +34,9 @@ public class AdminLogin extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-<<<<<<< HEAD
+        		
 
-
-        		RequestDispatcher r = request.getRequestDispatcher("Landing.html");
-        		r.forward(request, response);
-
-=======
-        	
->>>>>>> f71f59153bdce80f9a576ea0b8ca9964a95c19a3
-            		out.println("<h2>Login Successful</h2>");
+            		out.println("<h2>Admin Login Successful</h2>");
                 
             } else {
                 out.println("<h2>Invalid Username or Password</h2>");
