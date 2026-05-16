@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -14,7 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 @WebServlet("/AdminLoginServlet")
-public class AdminLoginServlet extends HttpServlet {
+public class AdminLoginServletController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -25,19 +27,23 @@ public class AdminLoginServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "8010865586");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_tracking_system", "root", "Dhiraj@1432");
 			
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM admins WHERE username=? AND password=?");
 			pstmt.setString(1, username);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
-
             if (rs.next()) {
 
-            		out.println("<h2>Admin Login Successful</h2>");
-                
+            	 HttpSession session = request.getSession();
+
+                 session.setAttribute("admin", username);
+
+                 response.sendRedirect("admindashboard");
+
             } else {
+
                 out.println("<h2>Invalid Username or Password</h2>");
             }
 			

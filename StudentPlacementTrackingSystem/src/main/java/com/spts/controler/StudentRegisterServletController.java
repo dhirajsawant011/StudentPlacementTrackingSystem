@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 @WebServlet("/StudentRegisterServlet")
-public class StudentRegisterServlet extends HttpServlet {
+public class StudentRegisterServletController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class StudentRegisterServlet extends HttpServlet {
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/placement_tracking_system",
 					"root",
-					"8010865586");
+					"Dhiraj@1432");
 
 			PreparedStatement pstmt = conn.prepareStatement(
 					"INSERT INTO students(name,email,mobile,course,percentage,skills,password) VALUES(?,?,?,?,?,?,?)");
